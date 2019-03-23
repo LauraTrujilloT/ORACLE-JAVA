@@ -10,3 +10,7 @@ public class Concatenacion{
     System.out.println(cad3);
   }
 }
+
+// StringBuilder cad1 = new StringBuilder();
+// cad1.append("Llorando en el lodo del mercado de Paris");
+// System.out.println(cad1.toString())
