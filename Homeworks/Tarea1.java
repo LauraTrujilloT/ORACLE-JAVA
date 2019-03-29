@@ -1,24 +1,25 @@
 package car;
 /**
- * <p>Almacena los Itemas que compra el cliente<\p>
+ * <p>Almacena los Items que compra el cliente<\p>
  * @author lvtrujillot
  */
 public class ShoppingCart {
     //Métodos
-    public void adicionarItem(Item nuevoItem){
-
+    public void addItem(Item nuevoItem){
         //lógica para adicionar el Item
+        Item.add(nuevoItem);
 
     }
     public void pagarItem(){
 
         return 0.0;
     }
-    public void eliminarItem(){
+    public void eliminarItem(Item item){
+      Item.remove(item)
 
     }
     public void cantidadItemShoppingCart(){
-
+      System.out.println(Item.size());
     }
     public void limpiarShoppingCart(){
         return 0;
