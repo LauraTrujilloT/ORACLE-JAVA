@@ -43,7 +43,9 @@ public static void main(String[] args) {
   Customer customer01 = new Customer();
   //declarar e instanciar
   Customer customer02; //Declarado
-
+}
+private int suma(int a, int b){
+  return (a+b) //Ejemplo metodos
 }
 ```
 **El operador punto** permite acceder a los atributos y métodos de la clase.
