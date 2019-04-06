@@ -143,27 +143,117 @@ Ejemplo:
 
 ```java
 import java.util.ArrayList;
+public static void main(String[] args) {
+  ArrayList<String> k = new ArrayList();
+  ArrayList<String> l = new ArrayList();
 
-public class test {
-    public static void main(String[] args) {
-        ArrayList k = new ArrayList();
-        ArrayList<String> l = new ArrayList();
+  k.add("Hola");
+  k.add("4");
+  k.add("6.3"); //boxing a integer
+  l.add("hola");
+  l.add("mundo");
 
-        k.add("Hola");
-        k.add(new Integer(4));
-        k.add(6.3); //boxing a integer
-        l.add("hola");
-        l.add("mundo");
+  System.out.println(k);
+  System.out.println(k.contains("4"));
+  System.out.println(k.size());
 
-        k.remove(0);
-        System.out.println(k);
+  k.remove(0);
+  System.out.println(k);
 
-        k.addAll(l);
-        System.out.println(k); //principio liscop
-        
-        for(Object o: k){
-            System.out.println(o);
-        }
+  k.addAll(l);
+  System.out.println(k); //principio liscop
 
+
+  for(Object o: k){
+      System.out.println(o);
     }
-```  
+  }
+}
+```
+
+
+# Interfaces
+#### Capítulo 10
+
+Definir comportamientos (contratos). Capacidad de hacer algo. Me permiten adicionar nuevas caracteristicas sin romper la regla de (cerrado) para modificar y (abierto) para extender.
+
+No se soporta variables en una interfaz sino **constantes** (cualquier atributo es constante), todo es de acceso público y los métodos son siempre **abstractos**
+
+Para implementar una interfaz se usa el comando `implements`, además los nombres de las interfaces son sustantivos.
+
+Las interfaces pueden heredar de otras interfaces (las que sean).
+**¿Cómo implementarlo en Java?**
+
+```java
+package interface1;
+
+public interface LanzarFuego {
+    // CONSTANTES deben tener UN VALOR
+    //No se soportan variables en interfaces
+    public void lanzarBolaDeFuego();
+    // Es un método abstracto
+    // public es innecesario
+}
+```
+Para la clase:
+
+```java
+package classes;
+
+import interface1.Atacar;
+import interface1.Correr;
+import interface1.Decapitar;
+
+public class Ninja extends Personaje implements Correr, Atacar, Decapitar {
+
+    @Override
+    public void correr() {
+        System.out.println("Correr como un Ninja");//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void lanzarShuriken() {
+        System.out.println("Lanzar Shuriken como Ninja"); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mocharCabeza() {
+        System.out.println("Mochar cabeza como Ninja"); //To change body of generated methods, choose Tools | Templates.
+    }
+
+}
+```
+> Ver carpeta Interfaces en [Github](https://github.com/LauraTrujilloT/ORACLE-JAVA/tree/master/Exercises/Interfaces)
+
+## Herencia multiple
+Java no soporta la herencia múltiple.
+
+**¿Cómo se soluciona?** A través del concepto de las interfaces.
+
+### Casting de Interfaces
+-
+
+### Interfaz `List`
+#### Colección de frameworks
+Esta en el paquete `java.util`.
+
+
+
+Ejemplo _List_:
+```java
+public class lists {
+    public static void main(String[] args) {
+        String[] nums = {"one", "two", "three"};
+        List<String> myList = Arrays.asList(nums);
+        
+        ArrayList<String> myArrayList = new ArrayList(myList);
+        
+        System.out.println(myList);
+        
+        String[] nums2 = {"four", "five", "six"};
+        ArrayList<String> myArrayList2 = new ArrayList(Arrays.asList(nums2));
+        
+        System.out.println(myArrayList2);
+}
+}
+```
