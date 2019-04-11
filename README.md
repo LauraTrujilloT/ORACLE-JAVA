@@ -3,9 +3,9 @@ A repository for an introductory Java Course.
 
 ## Table of Contents
 1. [Theory](https://github.com/LauraTrujilloT/ORACLE-JAVA/tree/master/Theory)
-  - [Classes & Objects](https://github.com/LauraTrujilloT/ORACLE-JAVA/tree/master/Theory/Classes%20and%20Objects)
-  - [Encapsulation]()
-  - [Inheritance]()
+     - [Classes & Objects](https://github.com/LauraTrujilloT/ORACLE-JAVA/tree/master/Theory/Classes%20and%20Objects)
+     - [Encapsulation]()
+     - [Inheritance]()
 2. [Exercises](https://github.com/LauraTrujilloT/ORACLE-JAVA/tree/master/Exercises)
 3. [Soccer Program](https://github.com/LauraTrujilloT/ORACLE-JAVA/tree/master/Soccer)
 
@@ -14,5 +14,5 @@ A repository for an introductory Java Course.
 - [x] Theory: Classes and Objects
 - [ ] Theory: Methods and Encapsulation
 - [ ] Theory: Inheritance
-- [ ] Exercises: Shopping Cart
+- [x] Exercises: Shopping Cart
 - [ ] Soccer program
