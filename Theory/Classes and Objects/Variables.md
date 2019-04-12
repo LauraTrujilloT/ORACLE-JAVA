@@ -54,3 +54,27 @@ There are variable types such as primitives and object references (non primitive
 - **Dont** get default values.
 
 ## Variables: Primitive Types
+There are 8 primitive types:
+
+1. `boolean`
+2. **Integer**: `byte`, `short`, `int`,`long`
+3. **Floating-point**: `float`, `double`
+4. **Character**: `char`
+
+### Integers
+- Represented by `byte` 8 bits, `short` 16 bits, `int` 32 bits, `long` 64 bits.
+- Hexadecimal `int x = 0x41;`
+- Binary `int x = 0b010001;`
+- Octal `intx = 0101;`
+
+### Floating-point
+- Real numbers
+- 32-bit `float` or 64-bit `double`
+- `float` **must** end in f or F `float num = 123.4f`
+- `double` trailing d is optional
+
+#### Rules of Thumb
+- Avoid `float` and `double` if exact answers are required.
+- Floating point is not as fast as integer arithmetic.
+- Stick with `int` and `double`.
+- Use `byte`,`short`,`float` only if memory saving is important.
