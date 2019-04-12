@@ -1,8 +1,11 @@
 
 package Soccer;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.StringTokenizer;
 import utility.GameUtils;
+import utility.PlayerDataBase;
 
 /**
  *
@@ -16,10 +19,11 @@ public class League {
         
         League theLeague = new League();
         //Creating Teams
-        Team[] theTeams = createTeams();
+        Team[] theTeams = theLeague.createTeams("Real Madrid, Bayern München, FC Barcelona", 7);
+        //LIMIT 8
        
         //Creating a GAME
-        Game[] theGames = createGames(theTeams);
+        Game[] theGames = theLeague.createGames(theTeams);
         
         for(Game currGame: theGames){
             currGame.playGame();
@@ -39,46 +43,43 @@ public class League {
     }
     //Creating methods
     
-    public static Team[] createTeams(){
-        String names[] = {"Falcao","Ronaldo","Messi","Cuadrado",
-        "Mina", "Ribery", "Benzema","Podolsky","Lahm","Dybala","Neuer",
-        "Trujillo","Taborda","Ospina","Zlatan","Iniesta"};
-        Player[] players = new Player[11];
+    public Team[] createTeams(String teamNames, int teamSize){ 
+        PlayerDataBase playerDB = new PlayerDataBase();
+        StringTokenizer teamNameTokens =  new StringTokenizer(teamNames, ",");
         
-        for (int i = 0; i < 11; i++) {
-            players[i] = new Player(names[new Random().nextInt(names.length)]);
-            //players[i].setPlayerName(names[new Random().nextInt(names.length)]);
-            //System.out.println(players[i].playerName);
-        }
+        Team[] theTeams = new Team[teamNameTokens.countTokens()];
         
-        Team team1 = new Team("Real Madrid", players);
-        
-        Player[] players2 = new Player[11];
-        
-        for (int i = 0; i < 11; i++) {
-            players2[i] = new Player(names[new Random().nextInt(names.length)]);
-        }   
-        
-        Team team2 = new Team("Bayern München", players2);
-        
-        Team[] theTeams = {team1, team2};
+        for (int i = 0 ; i < theTeams.length; i++){
+            theTeams[i] = new Team (teamNameTokens.nextToken(), playerDB.getTeam(teamSize));
+        }        
         return theTeams;
     }
-    public static Game[] createGames(Team[] theTeams){
-        Game theGame = new Game(theTeams[0], theTeams[1]);
-        Game theGame2 = new Game(theTeams[1], theTeams[0]);
-        Game theGame3 = new Game(theTeams[0], theTeams[1]);
-        Game theGame4 = new Game(theTeams[1], theTeams[0]);
-        
-        Game[] theGames = {theGame, theGame2, theGame3, theGame4};
-        return theGames;
+    public  Game[] createGames(Team[] theTeams){
+        ArrayList<Game> theGames = new ArrayList();
+        for(Team homeTeam: theTeams){
+            for(Team awayTeam: theTeams){
+                if (homeTeam != awayTeam){
+                    theGames.add(new Game(homeTeam, awayTeam));
+                }
+            }
+        }
+        return (Game[]) theGames.toArray(new Game[1]);
     }
     
     public void showBestTeam(Team[] theTeams){
+        Team currBestTeam = theTeams[0];
         System.out.println("\n Team Points ");
         for (Team currTeam: theTeams){
-            System.out.println(currTeam.getTeamName() + ": " 
-                    +  currTeam.getPointsTotal());
+           if(currTeam.getPointsTotal() > currBestTeam.getPointsTotal()){
+               currBestTeam = currTeam;
+           }else if (currTeam.getGoalsTotal() > currBestTeam.getGoalsTotal()) {
+               currBestTeam = currTeam;
+           }
+            
+            System.out.println("\n --------\n"+currTeam.getTeamName() + ": " 
+                    +  currTeam.getPointsTotal() + "\n (Goals scored: "
+                    + currTeam.getGoalsTotal()+")" );
         }
+        System.out.println("\n LEAGUE CHAMPION: "+ currBestTeam.getTeamName());
     }
 }

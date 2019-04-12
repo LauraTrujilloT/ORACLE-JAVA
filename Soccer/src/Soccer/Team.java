@@ -11,6 +11,7 @@ public class Team {
     private String teamName; //Creating attribut teamName
     private Player[] playerArray; //Creating an array of players
     private int pointsTotal;
+    private int goalsTotal;
     
     //Constructors
     public Team(String teamName){
@@ -73,5 +74,23 @@ public class Team {
 
     public void incPointsTotal(int pointsTotal){
         this.pointsTotal += pointsTotal;
+    }
+
+    /**
+     * @return the goalsTotal
+     */
+    public int getGoalsTotal() {
+        return goalsTotal;
+    }
+
+    /**
+     * @param goalsTotal the goalsTotal to set
+     */
+    public void setGoalsTotal(int goalsTotal) {
+        this.goalsTotal = goalsTotal;
+    }
+    
+    public void incGoalsTotal(int goals){
+        this.goalsTotal = this.goalsTotal + goals;
     }
 }
