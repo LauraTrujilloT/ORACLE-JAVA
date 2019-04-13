@@ -72,6 +72,7 @@ Los errores son _irrecuperables_, las excepciones no.
   3. `ClassCastException`
   4. `NullPointerException` (Para evitar esto, usar `optional`)
   5. `OutOfMemoryError`
+  > Para mas información ver [API Exceptions](https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Exception.html)
   
   Se puede crear `Exception` con `public class Exceptions`.
   
@@ -88,9 +89,73 @@ Los errores son _irrecuperables_, las excepciones no.
     - Error recuperable.
     - _Checked_ (Debe ser atrapado _caught_ o lanzado _thrown_)
   
-  Estan los siguientes formas de implementar excepciones: `try`, `catch`, `throws`, `throw`.
+  Estan los siguientes formas de implementar excepciones: `try` (lo que puede generar las excepciones), `catch` (capturan la excepcion), `throws`(propaga la excepción), `throw`(lanza la excepción _queja_), `finally`(bloque que siempre se ejecuta, se utiliza para cerrar flujos de datos).
   
   ## Propagación de Excepciones
+  
+  **Ejemplo** Jugador lanza pelota, papá se hace responsable:
+  
+  ```java
+  import excepciones.RoturaVidrioException;
+
+public class Jugador {
+    public void lanzarPelote(boolean rompeVidrio) throws RoturaVidrioException {
+         //throw Lanza UNA excepcion quejandose
+         // throws lanza la excepcion a otra clase 
+        if (rompeVidrio){
+            throw new RoturaVidrioException();
+        }
+    }
+}
+```
+   
+  y,
+  
+  ```java
+  import excepciones.RoturaVidrioException;
+
+public class Papa {
+    //METODOS
+    public void atenderRoturaVidrio(){
+        Jugador santiago = new Jugador();
+        
+        try{
+        santiago.lanzarPelote(false);
+        }catch (RoturaVidrioException e){
+            System.out.println(e);
+            System.out.println("Yo pago el vidrio");
+        }finally{
+            System.out.println("Soy un papá responsable");
+        }//El finally es para cerrar los problemas del try/catch
+        //aka siempre se ejecuta. Siempre se cierran los flujos de datos.
+    }
+}
+```
+  > Todas las clases que se crean de excepciones, heredan de `Exception`.
+  
+  ### Cómo son lanzadas las excepciones?
+  - A través de métodos
+  - Si no se atrapan, se propagan.
+  
+  ### Atrapando y propagando
+  - `throw`lanza la excepción pero es necesario que:  
+   	- la propague con `throws` ó que
+	- la atrape con `try / catch`
+ 
+ ## `IOException`
+ Tiene que ver con input and output de datos. Se usa en flujo de datos en general.
+  **Ejemplo**:
+  
+  ```java
+	try{
+		createFile();
+	} catch (IOException ioe){
+		System.out.println(ioe);
+	} 
+  }
+  ```
+  
+  
   
   
   
