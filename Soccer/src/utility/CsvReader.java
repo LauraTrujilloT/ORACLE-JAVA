@@ -25,7 +25,10 @@ public class CsvReader {
         while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] name = line.split(cvsSplitBy);
-                players.add(name[3]);
+                Datos a = new Datos();
+                a.setNombre(name[0]);
+                a.setDireccion(name[1]);
+                players.add(a);
                 //System.out.println( name[3] );
         }
         return players;
