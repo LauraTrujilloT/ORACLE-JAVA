@@ -2,10 +2,9 @@
 package Soccer;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.StringTokenizer;
-import utility.GameUtils;
 import utility.PlayerDataBase;
+
 
 /**
  *
@@ -19,8 +18,8 @@ public class League {
         
         League theLeague = new League();
         //Creating Teams
-        Team[] theTeams = theLeague.createTeams("Real Madrid, Bayern München, FC Barcelona", 7);
-        //LIMIT 8
+        Team[] theTeams = theLeague.createTeams("Real Madrid, Bayern München, FC Barcelona", 4 );
+        //LIMIT 8 w StringTokenizer and 4 w for
        
         //Creating a GAME
         Game[] theGames = theLeague.createGames(theTeams);
@@ -31,6 +30,9 @@ public class League {
         }
         
         theLeague.showBestTeam(theTeams);
+        
+        
+        
         /*
         //Searching for a PLAYER
         for(Player thePlayer: theTeams[0].playerArray){

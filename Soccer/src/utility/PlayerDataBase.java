@@ -3,32 +3,34 @@ package utility;
 import Soccer.Player;
 import java.util.*;
 
+
 /**
  *
  * @author ltt
  */
 public class PlayerDataBase {
     private ArrayList<Player> players;
-    
+ 
     String names[] = {"Falcao ", "Ronaldo","Messi","Cuadrado",
         "Mina", "Ribery", "Benzema","Podolsky","Lahm","Dybala","Neuer",
         "Trujillo","Taborda","Ospina","Zlatan","Iniesta" };
+   
     
  //Constructors
     public PlayerDataBase(){
         StringTokenizer authorTokens = new StringTokenizer(authorList, ",");
         players = new ArrayList();    
-     /*
-        for(String n:names){
-            players.add(new Player(names[new Random().nextInt(names.length)]));
+     ///*
+        for(int n = 0; n < names.length ; n++){
+            players.add(new Player(names[n]));
         }
-        for (int i = 0; i < players.size() ; i++){
-            System.out.println("-------------- Jugadores: \n"+players.get(i).getPlayerName());}
-       */
+      // */
+     /*
         while(authorTokens.hasMoreTokens()) {
             players.add(new Player(authorTokens.nextToken()));
             
         }
+*/
     }
     
     //METHODS
@@ -36,7 +38,7 @@ public class PlayerDataBase {
             Player[] teamPlayers = new Player[numberOfPlayers];
             
             for (int i = 0 ; i  < numberOfPlayers; i++ ){
-                int playerIndex =  new Random().nextInt(names.length);
+                int playerIndex =  new Random().nextInt(teamPlayers.length);
                 teamPlayers[i] = players.get(playerIndex);
                 players.remove(playerIndex);
             }
@@ -44,7 +46,8 @@ public class PlayerDataBase {
             }
     
     
-   String authorList = 
+    
+String authorList = 
 "Falcao," + 
 "Ronaldo," +
 "Benzema," +
